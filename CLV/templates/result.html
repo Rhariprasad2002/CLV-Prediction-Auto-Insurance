@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CLV Result</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: #121212;
+            color: #f0f0f0; /* default text color */
+            font-family: 'Arial', sans-serif;
+        }
+        .card {
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+            background-color: #1e1e1e;
+        }
+        h2 {
+            color: #ffd700; /* bright gold */
+        }
+        h4, h5 {
+            color: #ffffff; /* white for readability */
+        }
+        .btn-custom {
+            background-color: #ffd700;
+            color: #121212;
+            font-weight: bold;
+        }
+        .btn-custom:hover {
+            background-color: #ffb300;
+        }
+        .clv-section {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        .progress {
+            height: 30px;
+            border-radius: 15px;
+        }
+        .bar-label {
+            font-weight: bold;
+            color: #fff;
+        }
+        .img-container img {
+            border-radius: 15px;
+            max-width: 100%;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="container py-5">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-md-6">
+                <div class="card p-4">
+                    <h2 class="text-center mb-4">Customer Lifetime Value Prediction</h2>
+
+                    <div class="clv-section">
+                        <h4>CLV: <span class="text-warning">{{ clv }}</span></h4>
+                        <h4>Segment: 
+                            {% if segment == 'High' %}
+                                <span style="color:#00e676; font-weight:bold">{{ segment }}</span>
+                            {% elif segment == 'Medium' %}
+                                <span style="color:#ffea00; font-weight:bold">{{ segment }}</span>
+                            {% else %}
+                                <span style="color:#ff3d00; font-weight:bold">{{ segment }}</span>
+                            {% endif %}
+                        </h4>
+                        <h5>Action: <span class="text-light">{{ action }}</span></h5>
+                    </div>
+
+                    <div class="clv-section">
+                        <h5 class="mb-2">CLV Visualization:</h5>
+                        <!-- Horizontal Bar -->
+                        <div class="progress">
+                            {% if segment == 'High' %}
+                                <div class="progress-bar bg-success" role="progressbar" style="width: {{ clv/200 }}%;" aria-valuenow="{{ clv }}" aria-valuemin="0" aria-valuemax="20000">{{ clv }}</div>
+                            {% elif segment == 'Medium' %}
+                                <div class="progress-bar bg-warning" role="progressbar" style="width: {{ clv/200 }}%;" aria-valuenow="{{ clv }}" aria-valuemin="0" aria-valuemax="20000">{{ clv }}</div>
+                            {% else %}
+                                <div class="progress-bar bg-danger" role="progressbar" style="width: {{ clv/200 }}%;" aria-valuenow="{{ clv }}" aria-valuemin="0" aria-valuemax="20000">{{ clv }}</div>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="clv-section text-center mt-4">
+                        <a href="/" class="btn btn-custom btn-lg">Predict Again</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 text-center img-container">
+                <img src="{{ url_for('static', filename='auto.jpg') }}" alt="Car Image">
+            </div>
+        </div>
+    </div>
+</body>
+</html>
