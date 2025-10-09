@@ -21,12 +21,9 @@ This project focuses on building a **regression-based predictive model** to fore
 ## 🔹 Tech Stack
 - **Programming Languages**: Python  
 - **Libraries**: Pandas, NumPy, Scikit-learn, Matplotlib, Seaborn, XGBoost, Streamlit  
-- **Visualization /**: Streamlit 
+- **Visualization /**:  Matplotlib, Seaborn
 - **Deployment**: Streamlit Cloud / Flask
 -  /  (choose your platform)  
 - **Version Control**: GitHub  
 
-## 🔹 How to Use / Deployment
-1. Clone the repository:  
-   ```bash
-   git clone https://github.com/yourusername/CLV-Prediction-Auto-Insurance.git
+
